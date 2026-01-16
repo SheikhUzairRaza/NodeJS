@@ -19,7 +19,7 @@ socket.on('listening', () => {
     console.log('listening')
 });
 
-socket.bind(4000, () => { 
+socket.bind({port: 4000}, () => { 
     console.log('listening on', socket.address().port)
 }); 
 // if no parameters are given, a random ephemeral port is used, 
