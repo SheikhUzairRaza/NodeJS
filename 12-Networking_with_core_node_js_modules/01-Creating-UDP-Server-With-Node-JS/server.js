@@ -1,11 +1,16 @@
-import dgram from 'node:dgram';
+import dgram from 'node:dgram'
 
-const socket = dgram.createSocket('udp4');
+const socket = dgram.createSocket('udp4')
 
-socket.on('message', (msg, remoteAddress) => { 
-    console.log(msg.toString(), remoteAddress)
-}); 
+socket.on('message', (msg, remoteAddress) => {
+  console.log(msg.toString(), remoteAddress)
+  socket.send(
+    'msg received successfully',
+    remoteAddress.port,
+    remoteAddress.address
+  )
+})
 
-socket.bind({ port: 4000 }, () => {
-    console.log('listening on', socket.address().port)
-});
+socket.bind({ port: 4000, address: '192.168.100.130' }, () => {
+  console.log('listening on', socket.address().port)
+})
