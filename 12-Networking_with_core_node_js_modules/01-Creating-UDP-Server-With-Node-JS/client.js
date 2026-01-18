@@ -6,5 +6,7 @@ socket.on('message', (msg, remoteAddress) => {
     console.log(`${msg.toString()}`)
 });
 
-socket.send('Hi from Uzair Raza', 1000, '192.168.100.130')//when we are sending message from client to server there is no msg displaying at client side because client is only sending message to server
+socket.send('Hi from Uzair Raza', 1000, '192.168.100.130', () => {
+    console.log('Message sent')
+ })//when we are sending message from client to server there is no msg displaying at client side because client is only sending message to server
 
