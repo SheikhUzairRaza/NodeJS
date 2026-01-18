@@ -3,9 +3,9 @@ import dgram from 'node:dgram'
 const socket = dgram.createSocket('udp4')
 
 socket.on('message', (msg, remoteAddress) => {
-  console.log(msg.toString(), remoteAddress)
+  console.log(msg.toString())
   socket.send(
-    'msg received successfully',
+    `msg received successfully on server from ${remoteAddress.address}:${remoteAddress.port}`,
     remoteAddress.port,
     remoteAddress.address
   )
