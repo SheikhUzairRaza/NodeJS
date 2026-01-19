@@ -2,7 +2,7 @@ import dgram from 'node:dgram'
 import { appendFile, writeFile } from 'node:fs/promises'
 const serverSocket = dgram.createSocket('udp4')
 
-await writeFile(`./num_received.txt`, '')
+await writeFile(`./numbers_received.txt`, '')
 serverSocket.on('message', async (msg, remoteAddress) => {
     console.log(msg.toString())
     serverSocket.send(
@@ -11,7 +11,7 @@ serverSocket.on('message', async (msg, remoteAddress) => {
     remoteAddress.port,
     remoteAddress.address,
   )
-  await appendFile(`./num_received.txt`, msg)
+  await appendFile(`./numbers_received.txt`, msg)
 
 })
 
